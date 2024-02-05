@@ -21,25 +21,3 @@ stages:
               targetPath: '$(System.DefaultWorkingDirectory)/terraform-az-aks/terraform-azure-aks-modules'
               artifact: 'terraform-source-code'
               publishLocation: 'pipeline'
-          - task: TerraformInstaller@2
-            displayName: Terraform Install 
-            inputs:
-              terraformVersion: 'latest'
-          - task: TerraformCLI@2
-            displayName: Terraform init
-            inputs:
-              command: 'init'
-              workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-az-aks/terraform-azure-aks-modules'
-              backendType: 'azurerm'
-              backendServiceArm: 'tf-aks-devops-svc-con'
-              backendAzureRmResourceGroupName: 'terraform-storage-rg'
-              backendAzureRmStorageAccountName: 'terraformstateinfolines'
-              backendAzureRmContainerName: 'tfstatefiles'
-              backendAzureRmKey: 'aks-base.tfstate'
-              allowTelemetryCollection: false
-          - task: TerraformCLI@2
-            inputs:
-              command: 'validate'
-              workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-az-aks/terraform-azure-aks-modules'
-              allowTelemetryCollection: false
-  
