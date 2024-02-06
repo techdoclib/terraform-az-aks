@@ -42,4 +42,4 @@ stages:
               command: 'validate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-az-aks/terraform-azure-aks-modules'
               allowTelemetryCollection: false
-  ]
+  
